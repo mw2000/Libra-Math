@@ -1,0 +1,42 @@
+module Math {
+  public pi () : f64 {
+    return 3.14159625;
+  }
+
+  public e () : f64 {
+    return 2.71828182845905;
+  }
+
+  public factorial (n: u64) : u64 {
+    let result: u64;
+    result = 1;
+    for i in 1..n {
+      result = copy(result) * i;
+    }
+    return move(result);
+  }
+
+  public rad (deg: f64) : f64{
+    return (180 * move(deg) / copy(Self.pi()));
+  }
+
+  public deg (rad: f64) : f64 {
+    return (copy(Self.pi()) * move(rad) / 180);
+  }
+
+  public pow(n: f64, e: i64) : f64 {
+    let result: f64;
+    result = 1;
+
+    if (e < 0) {
+      for i in copy(e)..1 {
+        result = result / n;
+      }
+    } else if (e > 0) {
+      for i in 1..copy(e) {
+        result = result * copy(n);
+      }
+    }
+    return move(result);
+  } 
+}
